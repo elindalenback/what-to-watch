@@ -26,14 +26,29 @@ def what_to_watch():
     """
     print("Welcome! What would you like to watch today?")
     print("Please answer with 'movie', 'TV show' or 'both'\n")
-    
-    valid_responses = ['both', 'movie', 'tv show', 'tv-show']
-    what_to_watch_answer = input("Enter your answer here: ").lower()
 
-    if what_to_watch_answer in valid_responses:
-        print(f"Excellent! You chose {what_to_watch_answer}.")
-    else:
-        print("Invalid input. Please enter 'movie', 'tv show', or 'both'.")
+    while True:
+        valid_responses = ['both', 'movie', 'tv show', 'tv-show']
+        what_to_watch_answer = input("Enter your answer here: ").lower()
+
+        if what_to_watch_answer in valid_responses:
+            print(f"Excellent! You chose {what_to_watch_answer}.")
+        else:
+            print("Invalid input. Please enter 'movie', 'tv show', or 'both'.")
+
+        if validation(what_to_watch_answer, valid_responses):
+            break
+
+def validation(answer, responses):
+    try:
+        if answer not in responses:
+            raise ValueError
+
+    except ValueError as e:
+        print(e)
+        return False
+
+    return True
 
 def main():
     what_to_watch()
