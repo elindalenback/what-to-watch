@@ -26,14 +26,12 @@ def what_to_watch():
     """
     print("Welcome! What would you like to watch today?")
     print("Please answer with 'movie', 'TV show' or 'both'\n")
+    
+    valid_responses = ['both', 'movie', 'tv show', 'tv-show']
+    what_to_watch_answer = input("Enter your answer here: ").lower()
 
-    what_to_watch_answer = input("Enter your answer here: ")
-    if what_to_watch_answer.lower() == 'both':
-        print("Excellent! You chose both.")
-    elif what_to_watch_answer.lower() == 'movie':
-        print("Excellent! You chose a movie.")
-    elif what_to_watch_answer.lower() == 'tv show' or what_to_watch_answer.lower() == 'tv-show':
-        print("Excellent! You chose a TV show.")
+    if what_to_watch_answer in valid_responses:
+        print(f"Excellent! You chose {what_to_watch_answer}.")
     else:
         print("Invalid input. Please enter 'movie', 'tv show', or 'both'.")
 
