@@ -16,7 +16,9 @@ SHEET = GSPREAD_CLIENT.open('what_to_watch')
 
 movies = SHEET.worksheet('movies')
 movies_data = movies.get_all_values()
-
+tv_show = SHEET.worksheet('series')
+tv_show_data = tv_show.get_all_values()
+both_data = movies_data + tv_show_data
 
 def what_to_watch():
     """
@@ -41,7 +43,7 @@ def what_to_watch():
         if what_to_watch_answer == "movie":
             movie_function()
         elif what_to_watch_answer == "tv show" or what_to_watch_answer == "tv-show":
-            show_function()
+            tv_show_function()
         elif what_to_watch_answer == "both":
             both_function()
 
@@ -122,7 +124,7 @@ def movie_function():
             print(f'\nGenre: "{selected_keyword}"\n')
             find_suggestion_by_keyword(selected_keyword, movies_data)
         elif option == 11:
-            print("[1] Crime")
+            print("\n[1] Crime")
             print("[2] Fantasy")
             print("[3] Family")
             print("[4] Romance")
@@ -137,11 +139,110 @@ def movie_function():
         option = int(input("\n[10] Back to Start\n[11] Show Options\n[0] Exit program\n\nEnter another option: "))
 
 
-def show_function():
-    print("Hello from show function")
+def tv_show_function():
+    """
+    Present a menu of genre choices for the user to select from.
+    Based on the user's selection, display a list of tv show suggestions 
+    related to the chosen genre. The user can navigate through 
+    the suggestions or return to the main menu. The function exits 
+    when the user chooses to exit the program.
+    """
+    keyword_list = ["Crime", "Fantasy", "Family", "Romance", 
+                    "Drama", "Science Fiction", "Thriller", "Horror"]
+    print("Which genre are you in the mood for?")
+    print("Choose a genre in the list below: \n")
+    print("[1] Crime")
+    print("[2] Fantasy")
+    print("[3] Family")
+    print("[4] Romance")
+    print("[5] Drama")
+    print("[6] Science Fiction")
+    print("[7] Thriller")
+    print("[8] Horror\n")
+    print("[10] Back to Start")
+    print("[11] Show Options")
+    print("[0] Exit program")
+
+    option = validate_key_choices(['1', '2', '3', '4', '5', '6',
+                        '7', '8', '10', '11', '0'])
+
+    if option == 0:
+        print("Exiting program...")
+        return
+
+    while option != 0:
+        if option < 10:
+            keyword_index = option - 1
+            selected_keyword = keyword_list[keyword_index]
+            print(f'\nGenre: "{selected_keyword}"\n')
+            find_suggestion_by_keyword(selected_keyword, tv_show_data)
+        elif option == 11:
+            print("\n[1] Crime")
+            print("[2] Fantasy")
+            print("[3] Family")
+            print("[4] Romance")
+            print("[5] Drama")
+            print("[6] Science Fiction")
+            print("[7] Thriller")
+            print("[8] Horror\n")
+        else:
+            print('Back to Start...\n')
+            main()
+            break
+        option = int(input("\n[10] Back to Start\n[11] Show Options\n[0] Exit program\n\nEnter another option: "))
+
 
 def both_function():
-    print("Hello from both function")
+    """
+    Present a menu of genre choices for the user to select from.
+    Based on the user's selection, display a list of tv shows and movies suggestions 
+    related to the chosen genre. The user can navigate through 
+    the suggestions or return to the main menu. The function exits 
+    when the user chooses to exit the program.
+    """
+    keyword_list = ["Crime", "Fantasy", "Family", "Romance", 
+                    "Drama", "Science Fiction", "Thriller", "Horror"]
+    print("Which genre are you in the mood for?")
+    print("Choose a genre in the list below: \n")
+    print("[1] Crime")
+    print("[2] Fantasy")
+    print("[3] Family")
+    print("[4] Romance")
+    print("[5] Drama")
+    print("[6] Science Fiction")
+    print("[7] Thriller")
+    print("[8] Horror\n")
+    print("[10] Back to Start")
+    print("[11] Show Options")
+    print("[0] Exit program")
+
+    option = validate_key_choices(['1', '2', '3', '4', '5', '6',
+                        '7', '8', '10', '11', '0'])
+
+    if option == 0:
+        print("Exiting program...")
+        return
+
+    while option != 0:
+        if option < 10:
+            keyword_index = option - 1
+            selected_keyword = keyword_list[keyword_index]
+            print(f'\nGenre: "{selected_keyword}"\n')
+            find_suggestion_by_keyword(selected_keyword, both_data)
+        elif option == 11:
+            print("\n[1] Crime")
+            print("[2] Fantasy")
+            print("[3] Family")
+            print("[4] Romance")
+            print("[5] Drama")
+            print("[6] Science Fiction")
+            print("[7] Thriller")
+            print("[8] Horror\n")
+        else:
+            print('Back to Start...\n')
+            main()
+            break
+        option = int(input("\n[10] Back to Start\n[11] Show Options\n[0] Exit program\n\nEnter another option: "))
 
 def main():
     what_to_watch()
