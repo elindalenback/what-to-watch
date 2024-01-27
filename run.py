@@ -14,8 +14,7 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('what_to_watch')
 
 movies = SHEET.worksheet('movies')
-
-data = movies.get_all_values()
+movies_data = movies.get_all_values()
 
 
 def what_to_watch():
@@ -45,13 +44,13 @@ def what_to_watch():
         elif what_to_watch_answer == "both":
             both_function()
 
-        if validation(what_to_watch_answer, valid_responses):
+        if validation_wtw(what_to_watch_answer, valid_responses):
             break
 
-def validation(response, valid_responses):
+def validation_wtw(response, valid_responses):
     """
     Raises a ValueError if the input from the 
-    user is not a valid response.
+    user in what_to_watch() is not a valid response.
     """
     try:
         if response not in valid_responses:
@@ -63,8 +62,65 @@ def validation(response, valid_responses):
 
     return True
 
+def validate_key_choices(valid_choices):
+    option_is_valid = False
+    while option_is_valid is False:
+        option = input("Enter your option: ")
+        option_is_valid = option in valid_choices
+        if option_is_valid is False:
+            print('Please enter a valid option')
+    return int(option)
+
+def find_suggestion_by_keyword(keyword, data_sheet):
+    found_list = []
+    for suggestion in data_sheet:
+        if keyword.lower() in suggestion[1] or keyword.upper() in suggestion[1] or keyword in suggestion[1]:
+            found_list.append(suggestion)
+    print(f'We found {len(found_list)} suggestion matching your keyword: ')
+    for suggestion in found_list:
+        print(suggestion)
+
 def movie_function():
-    print("Hello from movie function")
+    """
+    Take user input of genre choice and create a list of the genres.
+    Search in the excel sheet for chosen genres and create a list of 
+    the movies with matching genres. Finally display a random choice 
+    from this list.
+    """
+    keyword_list = ["Crime", "Fantasy", "Family", "Romance", 
+                    "Drama", "Science Fiction", "Thriller", "Horror"]
+    print("Which genre are you in the mood for?")
+    print("Choose a genre in the list below: \n")
+    print("[1] Crime")
+    print("[2] Fantasy")
+    print("[3] Family")
+    print("[4] Romance")
+    print("[5] Drama")
+    print("[6] Science Fiction")
+    print("[7] Thriller")
+    print("[8] Horror\n")
+    print("[10] Back to Start")
+    print("[0] Exit program")
+
+    option = validate_key_choices(['1', '2', '3', '4', '5', '6',
+                        '7', '8', '10', '0'])
+
+    if option == 0:
+            print("Exiting program...")
+            return
+
+    while option != 0:
+        if option < 10:
+            keyword_index = option - 1
+            selected_keyword = keyword_list[keyword_index]
+            print(f'\nkey word: "{selected_keyword}"')
+            find_suggestion_by_keyword(selected_keyword, movies_data)
+        else:
+            print('Back to Start...\n')
+            main()
+            break
+        option = int(input("[10] Back to Start \n Enter another option: "))
+
 
 def show_function():
     print("Hello from show function")
