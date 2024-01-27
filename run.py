@@ -80,7 +80,7 @@ def find_suggestion_by_keyword(keyword, data_sheet):
     if found_list:
         random_suggestion = random.choice(found_list)
         print("Recommendation:")
-        print(random_suggestion)
+        print(', '.join(random_suggestion))
     else:
         print("No recommendations found for the given keyword.")
 
