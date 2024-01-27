@@ -1,6 +1,7 @@
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
 import gspread
 from google.oauth2.service_account import Credentials
+import random
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -76,16 +77,20 @@ def find_suggestion_by_keyword(keyword, data_sheet):
     for suggestion in data_sheet:
         if keyword.lower() in suggestion[1] or keyword.upper() in suggestion[1] or keyword in suggestion[1]:
             found_list.append(suggestion)
-    print(f'We found {len(found_list)} suggestion matching your keyword: ')
-    for suggestion in found_list:
-        print(suggestion)
+    if found_list:
+        random_suggestion = random.choice(found_list)
+        print("Recommendation:")
+        print(random_suggestion)
+    else:
+        print("No recommendations found for the given keyword.")
 
 def movie_function():
     """
-    Take user input of genre choice and create a list of the genres.
-    Search in the excel sheet for chosen genres and create a list of 
-    the movies with matching genres. Finally display a random choice 
-    from this list.
+    Present a menu of genre choices for the user to select from.
+    Based on the user's selection, display a list of movie suggestions 
+    related to the chosen genre. The user can navigate through 
+    the suggestions or return to the main menu. The function exits 
+    when the user chooses to exit the program.
     """
     keyword_list = ["Crime", "Fantasy", "Family", "Romance", 
                     "Drama", "Science Fiction", "Thriller", "Horror"]
@@ -113,13 +118,13 @@ def movie_function():
         if option < 10:
             keyword_index = option - 1
             selected_keyword = keyword_list[keyword_index]
-            print(f'\nkey word: "{selected_keyword}"')
+            print(f'\nGenre: "{selected_keyword}"\n')
             find_suggestion_by_keyword(selected_keyword, movies_data)
         else:
             print('Back to Start...\n')
             main()
             break
-        option = int(input("[10] Back to Start \n Enter another option: "))
+        option = int(input("\n[10] Back to Start\nEnter another option: "))
 
 
 def show_function():
