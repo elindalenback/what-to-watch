@@ -105,14 +105,15 @@ def movie_function():
     print("[7] Thriller")
     print("[8] Horror\n")
     print("[10] Back to Start")
+    print("[11] Show Options")
     print("[0] Exit program")
 
     option = validate_key_choices(['1', '2', '3', '4', '5', '6',
-                        '7', '8', '10', '0'])
+                        '7', '8', '10', '11', '0'])
 
     if option == 0:
-            print("Exiting program...")
-            return
+        print("Exiting program...")
+        return
 
     while option != 0:
         if option < 10:
@@ -120,11 +121,20 @@ def movie_function():
             selected_keyword = keyword_list[keyword_index]
             print(f'\nGenre: "{selected_keyword}"\n')
             find_suggestion_by_keyword(selected_keyword, movies_data)
+        elif option == 11:
+            print("[1] Crime")
+            print("[2] Fantasy")
+            print("[3] Family")
+            print("[4] Romance")
+            print("[5] Drama")
+            print("[6] Science Fiction")
+            print("[7] Thriller")
+            print("[8] Horror\n")
         else:
             print('Back to Start...\n')
             main()
             break
-        option = int(input("\n[10] Back to Start\nEnter another option: "))
+        option = int(input("\n[10] Back to Start\n[11] Show Options\n[0] Exit program\n\nEnter another option: "))
 
 
 def show_function():
