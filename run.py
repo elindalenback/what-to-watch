@@ -118,19 +118,22 @@ def genre_menu(data):
     print("[11] Show Options")
     print("[0] Exit program")
 
-    option = validate_key_choices(['1', '2', '3', '4', '5', '6',
-                                   '7', '8', '10', '11', '0'])
+    while True:
+        option = validate_key_choices(['1', '2', '3', '4', '5', '6',
+                                       '7', '8', '10', '11', '0'])
 
-    if option == 0:
-        print("Exiting program...")
-        return
-
-    while option != 0:
-        if option < 10:
+        if option == 0:
+            print("Exiting program...")
+            return
+        elif option < 9:
             keyword_index = option - 1
             selected_keyword = keyword_list[keyword_index]
             print(f'\nGenre: "{selected_keyword}"\n')
             find_suggestion_by_keyword(selected_keyword, data)
+        elif option == 10:
+            print("Back to Start...\n")
+            main()
+            return
         elif option == 11:
             print("\n[1] Crime")
             print("[2] Fantasy")
@@ -140,13 +143,9 @@ def genre_menu(data):
             print("[6] Science Fiction")
             print("[7] Thriller")
             print("[8] Horror\n")
-        else:
-            print('Back to Start...\n')
-            main()
-            break
-        option = int(input("\n[10] Back to Start\n[11] Show Options\n[0]"
-                           "Exit program\n\nEnter another option: "))
 
+        print("\n[10] Back to Start\n[11] Show Options\n[0]"
+              "Exit program\n\nEnter another option: ")
 
 # def movie_function():
     """
