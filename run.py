@@ -77,14 +77,16 @@ def validate_key_choices(valid_choices):
             print('Please enter a valid option')
     return int(option)
 
+import random
 
-def find_suggestion_by_keyword(keyword, data_sheet):
+def find_suggestion_by_keyword(keyword, data_sheet, displayed_suggestions):
     """
     Finds suggestions based on a given keyword in the data sheet.
 
     Args:
     - keyword (str): The keyword to search for.
     - data_sheet (list): The list of data to search within.
+    - displayed_suggestions (set): A set containing suggestions that have been displayed.
 
     Prints:
     - The recommendation if found, else a message indicating no recommendations.
@@ -93,13 +95,15 @@ def find_suggestion_by_keyword(keyword, data_sheet):
     for suggestion in data_sheet:
         if (keyword.lower() in suggestion[1] or
            keyword.upper() in suggestion[1] or keyword in suggestion[1]):
-            found_list.append(suggestion)
+            if tuple(suggestion) not in displayed_suggestions:
+                found_list.append(suggestion)
     if found_list:
         random_suggestion = random.choice(found_list)
+        displayed_suggestions.add(tuple(random_suggestion))  # Add selected suggestion to displayed set
         print("Recommendation:")
         print(', '.join(random_suggestion))
     else:
-        print("No recommendations found for the given keyword.")
+        print("No new recommendations found for the given keyword.")
 
 
 def genre_menu(data):
@@ -126,6 +130,8 @@ def genre_menu(data):
     print("[11] Show Options")
     print("[0] Exit program")
 
+    displayed_suggestions = set()  # Set to keep track of displayed suggestions
+
     while True:
         option = validate_key_choices(['1', '2', '3', '4', '5', '6',
                                        '7', '8', '10', '11', '0'])
@@ -139,7 +145,7 @@ def genre_menu(data):
             print()
             print("--------------------------------------------")
             print(f'Genre: "{selected_keyword}"\n')
-            find_suggestion_by_keyword(selected_keyword, data)
+            find_suggestion_by_keyword(selected_keyword, data, displayed_suggestions)
             print("--------------------------------------------")
         elif option == 10:
             print("Back to Start...\n")
