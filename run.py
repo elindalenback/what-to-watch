@@ -56,8 +56,14 @@ def what_to_watch():
 
 def validation_wtw(response, valid_responses):
     """
-    Raises a ValueError if the input from the
-    user in what_to_watch() is not a valid response.
+    Validates the user input for the 'what_to_watch' function.
+
+    Args:
+    - response (str): The user's input.
+    - valid_responses (list): A list of valid responses.
+
+    Returns:
+    - bool: True if the response is valid, False otherwise.
     """
     try:
         if response not in valid_responses:
@@ -71,6 +77,15 @@ def validation_wtw(response, valid_responses):
 
 
 def validate_key_choices(valid_choices):
+    """
+    Validates the user's option choice.
+
+    Args:
+    - valid_choices (list): A list of valid choices.
+
+    Returns:
+    - int: The validated option chosen by the user.
+    """
     option_is_valid = False
     while option_is_valid is False:
         option = input("Enter your option: ")
@@ -81,6 +96,16 @@ def validate_key_choices(valid_choices):
 
 
 def find_suggestion_by_keyword(keyword, data_sheet):
+    """
+    Finds suggestions based on a given keyword in the data sheet.
+
+    Args:
+    - keyword (str): The keyword to search for.
+    - data_sheet (list): The list of data to search within.
+
+    Prints:
+    - The recommendation if found, else a message indicating no recommendations.
+    """
     found_list = []
     for suggestion in data_sheet:
         if (keyword.lower() in suggestion[1] or
