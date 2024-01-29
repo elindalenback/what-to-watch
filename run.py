@@ -4,8 +4,6 @@ from google.oauth2.service_account import Credentials
 import random
 
 
-
-
 def what_to_watch():
     """
     Display a welcome message.
