@@ -23,8 +23,56 @@ The live link can be found here - [What-to-Watch](link to herokuapp.com/)
 ## Site Owner Goals
 
 - Provide a simple way for users to navigate the ocean of different choices of what to watch
+
 - Empower users with a time-saving tool to make life easier by offering a convenient solution for efficient decision-making
+
 - Enhance productivity by streamlining the entertainment selection process
+
 - Maximize leisure time by providing valuable recommendations promptly
+
 - Enrich the viewing experience with informed choices
+
+## User Stories
+
+### As a user I want to:
+
+- Navigate through a variety of entertainment options effortlessly.
+
+- Save time by quickly finding recommendations tailored to my preferences.
+
+- Avoid the frustration of indecisively scrolling through streaming platforms.
+
+- Enjoy a more enriching viewing experience with informed choices.
+
+- Maximize my leisure time by efficiently discovering content I love.
+
+## Logic Flow
+
+To help plan my project i used Lucid Charts to create a Flow Chart. It's worth noting that since the flow chart was generated early in the project timeline, it may not encompass all aspects of the final tool structure.
+
+image of lucid chart goes here
+
+## Feautres
+
+### Interactive User Interface:
+The script engages users with a friendly welcome message and prompts them to select their preference between watching a movie, TV show, or both. This provides an interactive experience by allowing users to indicate their preferences directly.
+
+### Genre Selection Menu:
+After the user selects their preference, they are presented with a menu of genres to choose from. This menu allows users to narrow down their preferences based on specific genres they are interested in, such as Crime, Fantasy, Family, etc.
+
+### Fetching Data from Google Sheets: 
+The script interacts with Google Sheets to retrieve data about movies and TV shows. It uses the gspread library along with Google OAuth2 authentication to access the data stored in a Google Sheets document.
+
+### Recommendation Generation: 
+Once the user selects a genre, the script searches the fetched data to find recommendations matching that genre. It filters the recommendations based on keywords related to the selected genre, such as "Crime" for crime-related movies or TV shows.
+
+### Random Recommendation Display:
+After filtering the recommendations, the script randomly selects one recommendation from the filtered list using the random function from 'import random'. This randomness adds an element of surprise and discovery for the user, as they are presented with a new recommendation each time.
+
+### Informative Output:
+The script displays the randomly selected recommendation to the user, along with relevant information such as the title, genre, and possibly other details. If no recommendations are found for the selected genre, the user is informed accordingly.
+
+### Looping and Navigation:
+After displaying a recommendation, the user has the option to get another recommendation, explore other genres, go back to the main menu, or exit the program. This looping and navigation mechanism allows users to continue exploring recommendations or exit the program when they are done.
+
 
