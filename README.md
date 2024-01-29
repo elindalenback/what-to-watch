@@ -75,4 +75,23 @@ The script displays the randomly selected recommendation to the user, along with
 ### Looping and Navigation:
 After displaying a recommendation, the user has the option to get another recommendation, explore other genres, go back to the main menu, or exit the program. This looping and navigation mechanism allows users to continue exploring recommendations or exit the program when they are done.
 
+### Future Features
+
+In the future, the plan is to web scrape, for example, IMDB's top 250 movies and 250 TV shows, and then display a random choice from these lists.
+
+
+## Data Model
+
+The data model for the **What to Watch** project is minimalistic and designed to accommodate the core information necessary for providing recommendations to users. It consists of two primary attributes:
+
+### 1. Title
+Description: Represents the title of the movie or TV show.
+Type: String
+
+### 2. Genre
+Description: Represents the genre of the movie or TV show.
+Type: String
+
+This simple data model allows for easy organization and retrieval of movie and TV show data based on titles and genres. It forms the backbone of the recommendation system, enabling users to discover content tailored to their genre preferences.
+
 
