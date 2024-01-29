@@ -94,4 +94,65 @@ Type: String
 
 This simple data model allows for easy organization and retrieval of movie and TV show data based on titles and genres. It forms the backbone of the recommendation system, enabling users to discover content tailored to their genre preferences.
 
+## Testing
 
+### PEP8 Testing
+The python files have all been passed through [PEP8](https://pep8ci.herokuapp.com/#) without any errors.
+
+## Libraries and Technologies Used
+
+### Python Libraries:
+
+- [random](https://docs.python.org/3/library/random.html?highlight=random#module-random) - `random.choice` is used to select a randome movie or tv show to be displayed as a recommendation.
+- [gspread](https://pypi.org/project/gspread/): to allow communication with Google Sheets.
+- [google.oauth2.service_account](https://google-auth.readthedocs.io/en/stable/index.html):  used to validate credentials and grant access to google service accounts.
+
+### Programs Used
+
+- [GitHub](https://github.com/) - Used for version control and documentation.
+- [Heroku](https://dashboard.heroku.com/apps) -  Used to deploy the live project.
+- [Lucidchart](https://lucid.app/documents#/dashboard) -  used to create the game flowchart
+- [PEP8](https://pep8ci.herokuapp.com/#) - Ensured adherence to Python code standards and maintained code quality.
+- [GitPod](gitpod.io) - Served as the workspace for development, providing an integrated environment for coding and testing.
+- [ChatGPT](https://chat.openai.com/) - Leveraged for troubleshooting, receiving movie and TV show recommendations, and ensuring grammar and spelling accuracy throughout the project.
+
+## Known Bugs
+
+No known bugs.
+
+## Fixed Bugs
+
+### Troubleshooting Duplicate Recommendations
+
+**Issue**: Duplicate recommendations were appearing in the output.
+
+### Troubleshooting Duplicate Recommendations
+
+**Investigation**: I identified that the `find_suggestion_by_keyword` function didn't prevent duplicates. Since the function was called each time a key value was pressed as the user's choice, this made it troublesome since nothing seemed to work that was applied in the `find_suggestion_by_keyword` function.
+
+**Solution**: A `displayed_suggestions` set was introduced to track displayed recommendations. The function was modified to check this set before adding suggestions to `found_list`. The displayed `displayed_suggestions` set was integrated into the `genre_menu` function to override the problem of the `find_suggestion_by_keyword` function being restarted.
+
+**Testing and Refinement**: Iteratively tested and refined the solution.
+
+**Verification**: Confirmed the fix prevented duplicate recommendations.
+
+## Deployment
+
+The live link can be found here: [What to Watch](https://herokuapp.com/)
+
+1. Log in to [Heroku](https://dashboard.heroku.com/apps) or create an account.
+2. On the main page, click the button labelled "New" in the top right corner and select "Create New App" from the drop-down menu.
+3. Enter a unique and meaningful app name.
+4. Select your preferred region.
+5. Click on the "Create App" button.
+6. Navigate to the "Settings" tab and scroll down to "Config Vars".
+7. Click "Reveal Config Vars" and add any necessary configuration variables (if applicable).
+8. Scroll down to the "Buildpack" section and click "Add Buildpack". Select "Python" and click "Save Changes".
+9. Repeat step 8 to add the "Node.js" buildpack. Ensure that the buildpacks are in the correct order.
+10. Return to the top of the page and navigate to the "Deploy" tab.
+11. Choose GitHub as the deployment method.
+12. Connect to your GitHub repository by searching for the repository name and clicking the "Connect" button.
+13. Scroll to the bottom of the deploy page and either enable automatic deploys for continuous deployment or manually deploy by clicking "Deploy Branch".
+14. Optionally, click "View" to access the deployed site.
+
+The site is now live and operational.
