@@ -156,3 +156,14 @@ The live link can be found here: [What to Watch](https://herokuapp.com/)
 14. Optionally, click "View" to access the deployed site.
 
 The site is now live and operational.
+
+## Credits 
+### Resources Used
+- [W3Schools](https://www.w3schools.com/)  
+- [Stack Overflow](https://stackoverflow.com/)
+- I followed the steps in the Code Institute Python walkthrough project - Love Sandwiches when setting up my Google Sheets API.
+
+## Acknowledgments
+I'm grateful for the Code Institute Slack community for their prompt responses and valuable feedback, which have been instrumental in my learning journey.
+
+And finally big thank you to my fellow student Anton Eriksson for brainstorming and troubleshooting. 
