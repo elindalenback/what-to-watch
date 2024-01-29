@@ -3,22 +3,7 @@ import gspread
 from google.oauth2.service_account import Credentials
 import random
 
-SCOPE = [
-    "https://www.googleapis.com/auth/spreadsheets",
-    "https://www.googleapis.com/auth/drive.file",
-    "https://www.googleapis.com/auth/drive"
-    ]
 
-CREDS = Credentials.from_service_account_file('creds.json')
-SCOPED_CREDS = CREDS.with_scopes(SCOPE)
-GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
-SHEET = GSPREAD_CLIENT.open('what_to_watch')
-
-movies = SHEET.worksheet('movies')
-movies_data = movies.get_all_values()
-tv_show = SHEET.worksheet('series')
-tv_show_data = tv_show.get_all_values()
-both_data = movies_data + tv_show_data
 
 
 def what_to_watch():
@@ -153,8 +138,11 @@ def genre_menu(data):
         elif option < 9:
             keyword_index = option - 1
             selected_keyword = keyword_list[keyword_index]
-            print(f'\nGenre: "{selected_keyword}"\n')
+            print()
+            print("--------------------------------------------")
+            print(f'Genre: "{selected_keyword}"\n')
             find_suggestion_by_keyword(selected_keyword, data)
+            print("--------------------------------------------")
         elif option == 10:
             print("Back to Start...\n")
             main()
@@ -177,4 +165,22 @@ def main():
     what_to_watch()
 
 
-main()
+if __name__ == "__main__":
+    SCOPE = [
+        "https://www.googleapis.com/auth/spreadsheets",
+        "https://www.googleapis.com/auth/drive.file",
+        "https://www.googleapis.com/auth/drive"
+    ]
+
+    CREDS = Credentials.from_service_account_file('creds.json')
+    SCOPED_CREDS = CREDS.with_scopes(SCOPE)
+    GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
+    SHEET = GSPREAD_CLIENT.open('what_to_watch')
+
+    movies = SHEET.worksheet('movies')
+    movies_data = movies.get_all_values()
+    tv_show = SHEET.worksheet('series')
+    tv_show_data = tv_show.get_all_values()
+    both_data = movies_data + tv_show_data
+
+    main()
