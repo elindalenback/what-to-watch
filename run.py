@@ -20,11 +20,12 @@ tv_show = SHEET.worksheet('series')
 tv_show_data = tv_show.get_all_values()
 both_data = movies_data + tv_show_data
 
+
 def what_to_watch():
     """
     Display a welcome message.
-    Prompt the user to choose between a movie, TV show, or both. 
-    Validate the input and provide a response. 
+    Prompt the user to choose between a movie, TV show, or both.
+    Validate the input and provide a response.
     Loop the question for input until valid answer.
     """
     print("Welcome! What would you like to watch today?")
@@ -37,12 +38,14 @@ def what_to_watch():
         if what_to_watch_answer in valid_responses:
             print(f"Excellent! You chose {what_to_watch_answer}.\n")
         else:
-            print("Invalid input. Please enter 'movie', 'tv show', or 'both'.\n")
+            print("Invalid input. Please enter 'movie',"
+                  "'tv show', or 'both'.\n")
 
-        # Decides wich function to run depending on user input 
+        # Decides wich function to run depending on user input
         if what_to_watch_answer == "movie":
             genre_menu(movies_data)
-        elif what_to_watch_answer == "tv show" or what_to_watch_answer == "tv-show":
+        elif (what_to_watch_answer == "tv show" or
+              what_to_watch_answer == "tv-show"):
             genre_menu(tv_show_data)
         elif what_to_watch_answer == "both":
             genre_menu(both_data)
@@ -50,9 +53,10 @@ def what_to_watch():
         if validation_wtw(what_to_watch_answer, valid_responses):
             break
 
+
 def validation_wtw(response, valid_responses):
     """
-    Raises a ValueError if the input from the 
+    Raises a ValueError if the input from the
     user in what_to_watch() is not a valid response.
     """
     try:
@@ -65,6 +69,7 @@ def validation_wtw(response, valid_responses):
 
     return True
 
+
 def validate_key_choices(valid_choices):
     option_is_valid = False
     while option_is_valid is False:
@@ -74,10 +79,12 @@ def validate_key_choices(valid_choices):
             print('Please enter a valid option')
     return int(option)
 
+
 def find_suggestion_by_keyword(keyword, data_sheet):
     found_list = []
     for suggestion in data_sheet:
-        if keyword.lower() in suggestion[1] or keyword.upper() in suggestion[1] or keyword in suggestion[1]:
+        if (keyword.lower() in suggestion[1] or
+           keyword.upper() in suggestion[1] or keyword in suggestion[1]):
             found_list.append(suggestion)
     if found_list:
         random_suggestion = random.choice(found_list)
@@ -86,15 +93,16 @@ def find_suggestion_by_keyword(keyword, data_sheet):
     else:
         print("No recommendations found for the given keyword.")
 
+
 def genre_menu(data):
     """
     Present a menu of genre choices for the user to select from.
-    Based on the user's selection, display a list of suggestions 
-    related to the chosen genre. The user can navigate through 
-    the suggestions or return to the main menu. The function exits 
+    Based on the user's selection, display a list of suggestions
+    related to the chosen genre. The user can navigate through
+    the suggestions or return to the main menu. The function exits
     when the user chooses to exit the program.
     """
-    keyword_list = ["Crime", "Fantasy", "Family", "Romance", 
+    keyword_list = ["Crime", "Fantasy", "Family", "Romance",
                     "Drama", "Science Fiction", "Thriller", "Horror"]
     print("Which genre are you in the mood for?")
     print("Choose a genre in the list below: \n")
@@ -111,7 +119,7 @@ def genre_menu(data):
     print("[0] Exit program")
 
     option = validate_key_choices(['1', '2', '3', '4', '5', '6',
-                        '7', '8', '10', '11', '0'])
+                                   '7', '8', '10', '11', '0'])
 
     if option == 0:
         print("Exiting program...")
@@ -136,18 +144,19 @@ def genre_menu(data):
             print('Back to Start...\n')
             main()
             break
-        option = int(input("\n[10] Back to Start\n[11] Show Options\n[0] Exit program\n\nEnter another option: "))
+        option = int(input("\n[10] Back to Start\n[11] Show Options\n[0]"
+                           "Exit program\n\nEnter another option: "))
 
 
-#def movie_function():
+# def movie_function():
     """
     Present a menu of genre choices for the user to select from.
-    Based on the user's selection, display a list of movie suggestions 
-    related to the chosen genre. The user can navigate through 
-    the suggestions or return to the main menu. The function exits 
+    Based on the user's selection, display a list of movie suggestions
+    related to the chosen genre. The user can navigate through
+    the suggestions or return to the main menu. The function exits
     when the user chooses to exit the program.
     """
-    keyword_list = ["Crime", "Fantasy", "Family", "Romance", 
+    keyword_list = ["Crime", "Fantasy", "Family", "Romance",
                     "Drama", "Science Fiction", "Thriller", "Horror"]
     print("Which genre are you in the mood for?")
     print("Choose a genre in the list below: \n")
@@ -164,7 +173,7 @@ def genre_menu(data):
     print("[0] Exit program")
 
     option = validate_key_choices(['1', '2', '3', '4', '5', '6',
-                        '7', '8', '10', '11', '0'])
+                                   '7', '8', '10', '11', '0'])
 
     if option == 0:
         print("Exiting program...")
@@ -189,18 +198,19 @@ def genre_menu(data):
             print('Back to Start...\n')
             main()
             break
-        option = int(input("\n[10] Back to Start\n[11] Show Options\n[0] Exit program\n\nEnter another option: "))
+        option = int(input("\n[10] Back to Start\n[11] Show Options\n[0]"
+                     "Exit program\n\nEnter another option: "))
 
 
-#def tv_show_function():
+# def tv_show_function():
     """
     Present a menu of genre choices for the user to select from.
-    Based on the user's selection, display a list of tv show suggestions 
-    related to the chosen genre. The user can navigate through 
-    the suggestions or return to the main menu. The function exits 
+    Based on the user's selection, display a list of tv show suggestions
+    related to the chosen genre. The user can navigate through
+    the suggestions or return to the main menu. The function exits
     when the user chooses to exit the program.
     """
-    keyword_list = ["Crime", "Fantasy", "Family", "Romance", 
+    keyword_list = ["Crime", "Fantasy", "Family", "Romance",
                     "Drama", "Science Fiction", "Thriller", "Horror"]
     print("Which genre are you in the mood for?")
     print("Choose a genre in the list below: \n")
@@ -217,7 +227,7 @@ def genre_menu(data):
     print("[0] Exit program")
 
     option = validate_key_choices(['1', '2', '3', '4', '5', '6',
-                        '7', '8', '10', '11', '0'])
+                                   '7', '8', '10', '11', '0'])
 
     if option == 0:
         print("Exiting program...")
@@ -242,18 +252,19 @@ def genre_menu(data):
             print('Back to Start...\n')
             main()
             break
-        option = int(input("\n[10] Back to Start\n[11] Show Options\n[0] Exit program\n\nEnter another option: "))
+        option = int(input("\n[10] Back to Start\n[11] Show Options\n[0]"
+                     "Exit program\n\nEnter another option: "))
 
 
-#def both_function():
+# def both_function():
     """
     Present a menu of genre choices for the user to select from.
-    Based on the user's selection, display a list of tv shows and movies suggestions 
-    related to the chosen genre. The user can navigate through 
-    the suggestions or return to the main menu. The function exits 
+    Based on the user's selection, display a list of tv shows and movies
+    suggestions related to the chosen genre. The user can navigate through
+    the suggestions or return to the main menu. The function exits
     when the user chooses to exit the program.
     """
-    keyword_list = ["Crime", "Fantasy", "Family", "Romance", 
+    keyword_list = ["Crime", "Fantasy", "Family", "Romance",
                     "Drama", "Science Fiction", "Thriller", "Horror"]
     print("Which genre are you in the mood for?")
     print("Choose a genre in the list below: \n")
@@ -270,7 +281,7 @@ def genre_menu(data):
     print("[0] Exit program")
 
     option = validate_key_choices(['1', '2', '3', '4', '5', '6',
-                        '7', '8', '10', '11', '0'])
+                                   '7', '8', '10', '11', '0'])
 
     if option == 0:
         print("Exiting program...")
@@ -295,9 +306,12 @@ def genre_menu(data):
             print('Back to Start...\n')
             main()
             break
-        option = int(input("\n[10] Back to Start\n[11] Show Options\n[0] Exit program\n\nEnter another option: "))
+        option = int(input("\n[10] Back to Start\n[11] Show Options\n[0]"
+                     "Exit program\n\nEnter another option: "))
+
 
 def main():
     what_to_watch()
+
 
 main()
