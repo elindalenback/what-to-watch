@@ -186,9 +186,11 @@ if __name__ == "__main__":
     movies_data = movies.get_all_values()
     tv_show = SHEET.worksheet('series')
     tv_show_data = tv_show.get_all_values()
-    
-    prefixed_movies_data = [['Movie: ' + item for item in movie] for movie in movies_data]
-    prefixed_tv_show_data = [['TV Show: ' + item for item in tv_show] for tv_show in tv_show_data]
+
+    prefixed_movies_data = [['Movie: ' + movie[0]] + movie[1:]
+                            for movie in movies_data]
+    prefixed_tv_show_data = [['TV Show: ' + tv_show[0]] + tv_show[1:]
+                             for tv_show in tv_show_data]
     both_data = prefixed_movies_data + prefixed_tv_show_data
 
     main()
