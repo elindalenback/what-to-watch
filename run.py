@@ -77,7 +77,6 @@ def validate_key_choices(valid_choices):
             print('Please enter a valid option')
     return int(option)
 
-import random
 
 def find_suggestion_by_keyword(keyword, data_sheet, displayed_suggestions):
     """
@@ -86,10 +85,11 @@ def find_suggestion_by_keyword(keyword, data_sheet, displayed_suggestions):
     Args:
     - keyword (str): The keyword to search for.
     - data_sheet (list): The list of data to search within.
-    - displayed_suggestions (set): A set containing suggestions that have been displayed.
+    - displayed_suggestions (set): A set containing suggestions
+      that have been displayed.
 
     Prints:
-    - The recommendation if found, else a message indicating no recommendations.
+    - The recommendation if found, else a message indicating no recommendations
     """
     found_list = []
     for suggestion in data_sheet:
@@ -99,7 +99,7 @@ def find_suggestion_by_keyword(keyword, data_sheet, displayed_suggestions):
                 found_list.append(suggestion)
     if found_list:
         random_suggestion = random.choice(found_list)
-        displayed_suggestions.add(tuple(random_suggestion))  # Add selected suggestion to displayed set
+        displayed_suggestions.add(tuple(random_suggestion))
         print("Recommendation:")
         print(', '.join(random_suggestion))
     else:
@@ -145,7 +145,8 @@ def genre_menu(data):
             print()
             print("--------------------------------------------")
             print(f'Genre: "{selected_keyword}"\n')
-            find_suggestion_by_keyword(selected_keyword, data, displayed_suggestions)
+            find_suggestion_by_keyword(selected_keyword, data,
+                                       displayed_suggestions)
             print("--------------------------------------------")
         elif option == 10:
             print("Back to Start...\n")
@@ -185,6 +186,9 @@ if __name__ == "__main__":
     movies_data = movies.get_all_values()
     tv_show = SHEET.worksheet('series')
     tv_show_data = tv_show.get_all_values()
-    both_data = movies_data + tv_show_data
+    
+    prefixed_movies_data = [['Movie: ' + item for item in movie] for movie in movies_data]
+    prefixed_tv_show_data = [['TV Show: ' + item for item in tv_show] for tv_show in tv_show_data]
+    both_data = prefixed_movies_data + prefixed_tv_show_data
 
     main()
