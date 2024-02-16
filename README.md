@@ -104,8 +104,9 @@ The python files have all been passed through [PEP8](https://pep8ci.herokuapp.co
 | Starting Program | Display welcome message and allow for user input| Starting the program | A welcome message is displayed and allows for user input | Pass |
 | Validating user input in `what_to_watch` function | If correct value move to `genre_menu` function that displays correct type of 'movie', 'tv show' or 'both' | Input 'movie', 'tv show', or 'both' | Correct choice is displayed in next step | Pass |
 | Validating user input in `what_to_watch` function | If incorrect value move prompt user to try again| Input invalid option | Displays a message prompting user to try again | Pass |
-| Displaying genre menu | Prompt user to choose a genre or go back to start menu | Entering the genre selection menu | Genre menu is displayed with options and 'Back to Start' and 'Show Options' choices | Pass |
+| Displaying genre menu | Prompt user to choose a genre or go back to start menu | Entering the genre selection menu | Genre menu is displayed with options and 'Back to Start', 'Show Options' and 'Exit' choices | Pass |
 | Selecting a genre | Display recommendations based on selected genre | Choosing a genre from the menu | Recommendations related to the selected genre are displayed | Pass |
+| List of genre | When no more new recommendations in list: display message to user | Choosing the same genre to display all the recommendations in the list | When all recommendations have been displayd the message is shown to the user | Pass |
 | Returning to start menu | Allow user to return to the main menu from genre menu | Selecting 'Back to Start' option | Program returns to the main menu without errors | Pass |
 | Exiting program | Allow user to exit the program gracefully | Selecting 'Exit program' option | Program exits without errors | Pass |
 | Validating user input in genre menu | Ensure user input for genre selection is validated | Entering invalid options | Program prompts user to enter a valid option until valid input is provided | Pass |

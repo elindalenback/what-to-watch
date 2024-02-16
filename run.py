@@ -16,7 +16,7 @@ def what_to_watch():
 
     while True:
         valid_responses = ['both', 'movie', 'tv show', 'tv-show']
-        what_to_watch_answer = input("Enter your answer here: ").lower()
+        what_to_watch_answer = input("Enter your answer here: /n").lower()
 
         if what_to_watch_answer in valid_responses:
             print(f"Excellent! You chose {what_to_watch_answer}.\n")
