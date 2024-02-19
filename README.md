@@ -2,9 +2,9 @@
 
 This project provides a user-friendly and interactive way for users to explore and discover new movies or TV shows based on their genre preferences, leveraging data stored in a Google Sheets document for a curated selection of recommendations.
 
-The live link can be found here - [What-to-Watch](link to herokuapp.com/)
+The live link can be found here - [What-to-Watch](https://what-to-watch-efku.onrender.com/)
 
-![Site Mockup](insert picture here)
+![Site Mockup](docs/readme_images/what-to-watch-mockup.png)
 
 ## Usage
 
@@ -57,27 +57,46 @@ image of lucid chart goes here
 ### Interactive User Interface:
 The script engages users with a friendly welcome message and prompts them to select their preference between watching a movie, TV show, or both. This provides an interactive experience by allowing users to indicate their preferences directly.
 
+![Welcome message](docs/readme_images/welcome.png)
+
 ### Genre Selection Menu:
 After the user selects their preference, they are presented with a menu of genres to choose from. This menu allows users to narrow down their preferences based on specific genres they are interested in, such as Crime, Fantasy, Family, etc.
+
+![Genre option](docs/readme_images/movie.png)
 
 ### Fetching Data from Google Sheets: 
 The script interacts with Google Sheets to retrieve data about movies and TV shows. It uses the gspread library along with Google OAuth2 authentication to access the data stored in a Google Sheets document.
 
 ### Recommendation Generation: 
-Once the user selects a genre, the script searches the fetched data to find recommendations matching that genre. It filters the recommendations based on keywords related to the selected genre, such as "Crime" for crime-related movies or TV shows.
+Once the user selects a genre, the script searches the fetched data to find recommendations matching that genre. It filters the recommendations based on keywords related to the selected genre, such as "Crime for crime-related movies or TV shows.
+
+![Movie recommendation](docs/readme_images/genre.png)
 
 ### Random Recommendation Display:
 After filtering the recommendations, the script randomly selects one recommendation from the filtered list using the random function from 'import random'. This randomness adds an element of surprise and discovery for the user, as they are presented with a new recommendation each time.
 
+![More recommendations](docs/readme_images/more-recommendations.png)
+
 ### Informative Output:
 The script displays the randomly selected recommendation to the user, along with relevant information such as the title, genre, and possibly other details. If no recommendations are found for the selected genre, the user is informed accordingly.
+
+![No more recommendation](docs/readme_images/no-recommendatition.png)
 
 ### Looping and Navigation:
 After displaying a recommendation, the user has the option to get another recommendation, explore other genres, go back to the main menu, or exit the program. This looping and navigation mechanism allows users to continue exploring recommendations or exit the program when they are done.
 
+![Navigation](docs/readme_images/exit.png)
+
+### Check for invalid input
+Ensure that all input provided by the user is valid. If the input does not match the expected format or range, prompt the user to try again. This applies to options such as "movie," "tv-show," or "both," as well as numerical inputs for genres and navigation menu selections.
+
+![Invalid Answer](docs/readme_images/invalid-answer.png)
+
+![Invalid Option](docs/readme_images/invalid-option.png)
+
 ### Future Features
 
-In the future, the plan is to web scrape, for example, IMDB's top 250 movies and 250 TV shows, and then display a random choice from these lists.
+On the horizon is the implementation of web scraping functionality, which will enable the inclusion of diverse content sources like IMDB's top 250 movies and top 250 TV shows. This enhancement will introduce the option for users to explore random selections from these renowned lists effortlessly.
 
 
 ## Data Model
@@ -102,13 +121,13 @@ The python files have all been passed through [PEP8](https://pep8ci.herokuapp.co
 | Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
 | --- | --- | --- | --- | --- |
 | Starting Program | Display welcome message and allow for user input| Starting the program | A welcome message is displayed and allows for user input | Pass |
-| Validating user input in `what_to_watch` function | If correct value move to `genre_menu` function that displays correct type of 'movie', 'tv show' or 'both' | Input 'movie', 'tv show', or 'both' | Correct choice is displayed in next step | Pass |
-| Validating user input in `what_to_watch` function | If incorrect value move prompt user to try again| Input invalid option | Displays a message prompting user to try again | Pass |
-| Displaying genre menu | Prompt user to choose a genre or go back to start menu | Entering the genre selection menu | Genre menu is displayed with options and 'Back to Start', 'Show Options' and 'Exit' choices | Pass |
+| Validate correct user input in `what_to_watch` function | If correct value move to `genre_menu` function that displays correct type of 'movie', 'tv show' or 'both' | Input 'movie', 'tv show', or 'both' | User feedback of choice is displayed and genre menu is showing | Pass |
+| Validate incorrect user input in `what_to_watch` function | If incorrect value prompt user to try again| Input invalid option | Displays a message prompting user to try again | Pass |
 | Selecting a genre | Display recommendations based on selected genre | Choosing a genre from the menu | Recommendations related to the selected genre are displayed | Pass |
-| List of genre | When no more new recommendations in list: display message to user | Choosing the same genre to display all the recommendations in the list | When all recommendations have been displayd the message is shown to the user | Pass |
-| Returning to start menu | Allow user to return to the main menu from genre menu | Selecting 'Back to Start' option | Program returns to the main menu without errors | Pass |
-| Exiting program | Allow user to exit the program gracefully | Selecting 'Exit program' option | Program exits without errors | Pass |
+| List of genre | When no more new recommendations in list: display message to user | Choosing the same genre to display all the recommendations in the list | When all recommendations have been displayd a message is shown to the user | Pass |
+| Returning to start menu | Allow user to return to the main menu from genre menu | Selecting 'Back to Start' option | Program returns to the main menu | Pass |
+| Show option | When "11" is pressed the option menu will show | Entering "11" | the option menu is shown | Pass |
+| Exiting program | Allow user to exit the program gracefully | Selecting 'Exit program' option | Program exits | Pass |
 | Validating user input in genre menu | Ensure user input for genre selection is validated | Entering invalid options | Program prompts user to enter a valid option until valid input is provided | Pass |
 
 
@@ -123,7 +142,7 @@ The python files have all been passed through [PEP8](https://pep8ci.herokuapp.co
 ### Programs Used
 
 - [GitHub](https://github.com/) - Used for version control and documentation.
-- [Heroku](https://dashboard.heroku.com/apps) -  Used to deploy the live project.
+- [Render](http://https://render.com/) -  Used to deploy the live project.
 - [Lucidchart](https://lucid.app/documents#/dashboard) -  used to create the game flowchart
 - [PEP8](https://pep8ci.herokuapp.com/#) - Ensured adherence to Python code standards and maintained code quality.
 - [GitPod](gitpod.io) - Served as the workspace for development, providing an integrated environment for coding and testing.
@@ -151,24 +170,30 @@ No known bugs.
 
 ## Deployment
 
-The live link can be found here: [What to Watch](https://herokuapp.com/)
+The live link can be found here: [What-to-Watch](https://what-to-watch-efku.onrender.com/)
 
-1. Log in to [Heroku](https://dashboard.heroku.com/apps) or create an account.
-2. On the main page, click the button labelled "New" in the top right corner and select "Create New App" from the drop-down menu.
-3. Enter a unique and meaningful app name.
-4. Select your preferred region.
-5. Click on the "Create App" button.
-6. Navigate to the "Settings" tab and scroll down to "Config Vars".
-7. Click "Reveal Config Vars" and add any necessary configuration variables (if applicable).
-8. Scroll down to the "Buildpack" section and click "Add Buildpack". Select "Python" and click "Save Changes".
-9. Repeat step 8 to add the "Node.js" buildpack. Ensure that the buildpacks are in the correct order.
-10. Return to the top of the page and navigate to the "Deploy" tab.
-11. Choose GitHub as the deployment method.
-12. Connect to your GitHub repository by searching for the repository name and clicking the "Connect" button.
-13. Scroll to the bottom of the deploy page and either enable automatic deploys for continuous deployment or manually deploy by clicking "Deploy Branch".
-14. Optionally, click "View" to access the deployed site.
+### Cloning the Project
+1. Clone this project from [GitHub](https://github.com/elindalenback/what-to-watch).
 
-The site is now live and operational.
+### Deployment on Render
+2. Log in to [Render](https://render.com/) or create an account.
+
+3. On the dashboard, select "*NEW*" and then choose "*Create a new Web Service*".
+
+4. Opt for "*Build and deploy from a Git repository*" to connect to the GitHub repository.
+
+5. Under "*Connect a repository*", paste your GitHub repository link into the search bar.
+
+### Configuration on Render
+6. Select a name for your project, choose the closest region from the list, set "*Runtime*" to "Python," and set the "*Build Command*" to "$pip install -r requirements.txt". In the "*Start Command*", copy and paste the content of the Procfile, which in this case is "web: node index.js".
+
+- **IMPORTANT:** Remember to add your "creds.json" file in the "*Environment Variables*" to ensure access to your Google Spreadsheet.
+
+7. Click "*Create Webservice*" and wait for the program to be deployed.
+
+8. Your page's link will be available in the top-left corner of the loading page.
+
+**The site is now live and operational.**
 
 ## Credits 
 ### Resources Used
@@ -177,6 +202,6 @@ The site is now live and operational.
 - I followed the steps in the Code Institute Python walkthrough project - Love Sandwiches when setting up my Google Sheets API.
 
 ## Acknowledgments
-I'm grateful for the Code Institute Slack community for their prompt responses and valuable feedback, which have been instrumental in my learning journey.
+I'm grateful for the Code Institute's Student Care Team for their prompt responses and valuable feedback and understanding, which have been instrumental in my learning journey. I also want to thank the Tutors at Code Institute for helping me deploy this project, it was a long way but we made it!
 
-And finally big thank you to my fellow student Anton Eriksson for brainstorming and troubleshooting. 
+And finally big thank you to my fellow student Anton Eriksson for all the brainstorming and troubleshooting. 
