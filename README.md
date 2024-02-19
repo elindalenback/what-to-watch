@@ -6,6 +6,44 @@ The live link can be found here - [What-to-Watch](https://what-to-watch-efku.onr
 
 ![Site Mockup](docs/readme_images/what-to-watch-mockup.png)
 
+- [What to Watch](#what-to-watch)
+  * [Usage](#usage)
+  * [Site Owner Goals](#site-owner-goals)
+  * [User Stories](#user-stories)
+    + [As a user I want to:](#as-a-user-i-want-to-)
+  * [Logic Flow](#logic-flow)
+  * [Feautres](#feautres)
+    + [Interactive User Interface:](#interactive-user-interface-)
+    + [Genre Selection Menu:](#genre-selection-menu-)
+    + [Fetching Data from Google Sheets:](#fetching-data-from-google-sheets-)
+    + [Recommendation Generation:](#recommendation-generation-)
+    + [Random Recommendation Display:](#random-recommendation-display-)
+    + [Informative Output:](#informative-output-)
+    + [Looping and Navigation:](#looping-and-navigation-)
+    + [Check for invalid input](#check-for-invalid-input)
+    + [Future Features](#future-features)
+  * [Data Model](#data-model)
+    + [1. Title](#1-title)
+    + [2. Genre](#2-genre)
+  * [Testing](#testing)
+    + [PEP8 Testing](#pep8-testing)
+  * [Libraries and Technologies Used](#libraries-and-technologies-used)
+    + [Python Libraries:](#python-libraries-)
+    + [Programs Used](#programs-used)
+  * [Known Bugs](#known-bugs)
+  * [Fixed Bugs](#fixed-bugs)
+    + [Troubleshooting Duplicate Recommendations](#troubleshooting-duplicate-recommendations)
+    + [Troubleshooting Duplicate Recommendations](#troubleshooting-duplicate-recommendations-1)
+  * [Deployment](#deployment)
+    + [Cloning the Project](#cloning-the-project)
+    + [Deployment on Render](#deployment-on-render)
+    + [Configuration on Render](#configuration-on-render)
+  * [Credits](#credits)
+    + [Resources Used](#resources-used)
+  * [Acknowledgments](#acknowledgments)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 ## Usage
 
 1. Welcome Message: When you run the tool, it will display a welcome message asking you what you would like to watch today, whether it's a movie, TV show, or both.
@@ -50,7 +88,7 @@ The live link can be found here - [What-to-Watch](https://what-to-watch-efku.onr
 
 To help plan my project i used Lucid Charts to create a Flow Chart. It's worth noting that since the flow chart was generated early in the project timeline, it may not encompass all aspects of the final tool structure.
 
-image of lucid chart goes here
+![Lucidchart](docs/readme_images/lucidchart.png)
 
 ## Feautres
 
